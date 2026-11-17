@@ -13,6 +13,7 @@ import {
 import { toSearchPattern } from "@/lib/query";
 import { filterEndExclusiveIso, filterStartIso } from "@/lib/reservations/date-filter";
 import { getInvoiceStatusLabel } from "@/lib/reservations/invoice";
+import { loadDisplayNames } from "@/lib/profiles/display-names";
 import { createClient } from "@/lib/supabase/server";
 import { reservationQuerySchema } from "@/lib/validation/reservations";
 import type { Database } from "@/types/database";
@@ -31,6 +32,7 @@ const HEADERS = [
   "Paid Date",
   "Delivered Date",
   "Cancelled Date",
+  "Processed By",
 ] as const;
 
 type ReservationListRow = Pick<
@@ -134,6 +136,7 @@ export async function GET(request: NextRequest) {
       paid_at: string | null;
       delivered_at: string | null;
       cancelled_at: string | null;
+      created_by: string | null;
     }
   >();
   const itemsById = new Map<string, string[]>();
@@ -144,7 +147,7 @@ export async function GET(request: NextRequest) {
       await Promise.all([
         supabase
           .from("reservations")
-          .select("id, paid_at, delivered_at, cancelled_at")
+          .select("id, paid_at, delivered_at, cancelled_at, created_by")
           .in("id", ids),
         supabase
           .from("reservation_items")
@@ -167,6 +170,11 @@ export async function GET(request: NextRequest) {
       itemsById.set(item.reservation_id, current);
     });
   }
+
+  const processorNames = await loadDisplayNames(
+    supabase,
+    [...datesById.values()].map((row) => row.created_by),
+  );
 
   const operationalDateColumn =
     filters.status === "paid"
@@ -215,6 +223,7 @@ export async function GET(request: NextRequest) {
         dates?.paid_at ? formatDate(dates.paid_at) : "",
         dates?.delivered_at ? formatDate(dates.delivered_at) : "",
         dates?.cancelled_at ? formatDate(dates.cancelled_at) : "",
+        dates?.created_by ? processorNames.get(dates.created_by) ?? "" : "",
       ];
     }),
   );

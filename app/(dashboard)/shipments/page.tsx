@@ -17,6 +17,7 @@ import {
   PRIVATE_SEARCH_COOKIE_NAMES,
   readPrivateSearchTerm,
 } from "@/lib/private-search";
+import { loadDisplayNames } from "@/lib/profiles/display-names";
 import { createClient } from "@/lib/supabase/server";
 import { shipmentQuerySchema } from "@/lib/validation/shipments";
 
@@ -76,7 +77,7 @@ export default async function ShipmentsPage({
   let query = supabase
     .from("reservation_shipments")
     .select(
-      "id, shipment_no, reservation_id, status, downpayment_applied, created_at, shipped_at",
+      "id, shipment_no, reservation_id, status, downpayment_applied, created_at, shipped_at, created_by",
       { count: "exact" },
     );
 
@@ -126,6 +127,7 @@ export default async function ShipmentsPage({
   const [
     { data: reservations },
     { data: shipmentItems },
+    processorNames,
   ] = await Promise.all([
     supabase
       .from("reservation_list")
@@ -138,6 +140,10 @@ export default async function ShipmentsPage({
       .from("reservation_shipment_items")
       .select("shipment_id, quantity")
       .in("shipment_id", shipmentIds.length ? shipmentIds : [ZERO_UUID]),
+    loadDisplayNames(
+      supabase,
+      (shipments ?? []).map((shipment) => shipment.created_by),
+    ),
   ]);
 
   const reservationById = new Map(
@@ -169,6 +175,9 @@ export default async function ShipmentsPage({
       shippedAt: shipment.shipped_at,
       itemCount: itemCountByShipment.get(shipment.id) ?? 0,
       units: unitsByShipment.get(shipment.id) ?? 0,
+      processedBy: shipment.created_by
+        ? processorNames.get(shipment.created_by) ?? null
+        : null,
     };
   });
 
@@ -328,6 +337,7 @@ export default async function ShipmentsPage({
                     <th className="px-5 py-4 font-bold">Status</th>
                     <th className="px-5 py-4 font-bold">Prepared</th>
                     <th className="px-5 py-4 font-bold">Released</th>
+                    <th className="px-5 py-4 font-bold">Processed by</th>
                     <th className="w-28 px-5 py-4 text-right font-bold">Actions</th>
                   </tr>
                 </thead>
@@ -370,6 +380,9 @@ export default async function ShipmentsPage({
                         {shipment.shippedAt
                           ? formatManilaDateTime(shipment.shippedAt)
                           : "—"}
+                      </td>
+                      <td className="whitespace-nowrap px-5 py-4 text-sm font-semibold text-ink">
+                        {shipment.processedBy ?? <span className="font-normal text-muted">—</span>}
                       </td>
                       <td className="px-5 py-4">
                         <div className="flex justify-end gap-2">

@@ -570,6 +570,10 @@ export type Database = {
       };
     };
     Functions: {
+      profile_display_names: {
+        Args: { p_ids: string[] };
+        Returns: { id: string; display_name: string }[];
+      };
       get_partially_paid_reservation_ids: {
         Args: Record<PropertyKey, never>;
         Returns: string[];

@@ -35,6 +35,7 @@ import { PageNotice } from "@/components/ui/page-notice";
 import { Pagination } from "@/components/ui/pagination";
 import { SortLink } from "@/components/ui/sort-link";
 import { getCurrentProfile, roleCanWrite, roleIsAdmin } from "@/lib/auth";
+import { loadDisplayNames } from "@/lib/profiles/display-names";
 import { formatCurrency, formatDate } from "@/lib/format";
 import { loadCustomerInvoice } from "@/lib/reservations/customer-invoice";
 import { toSearchParams, toSearchPattern } from "@/lib/query";
@@ -357,6 +358,8 @@ export default async function ReservationsPage({
   const remainingValueByReservation = new Map<string, number>();
   const downpaymentAppliedByReservation = new Map<string, number>();
   const activePaidByReservation = new Map<string, number>();
+  // Who processed (created) each reservation, for the "Processed by" column.
+  const processedByReservation = new Map<string, string>();
   if (reservationIds.length) {
     // These reads are independent, so avoid waiting for one network round trip
     // before starting the other.
@@ -364,6 +367,7 @@ export default async function ReservationsPage({
       { data: reservationItems },
       { data: shipments },
       { data: paymentRows },
+      { data: creatorRows },
     ] = await Promise.all([
       supabase
         .from("reservation_items")
@@ -382,7 +386,20 @@ export default async function ReservationsPage({
         .select("reservation_id, amount")
         .in("reservation_id", reservationIds)
         .is("voided_at", null),
+      supabase
+        .from("reservations")
+        .select("id, created_by")
+        .in("id", reservationIds),
     ]);
+
+    const creatorNames = await loadDisplayNames(
+      supabase,
+      (creatorRows ?? []).map((row) => row.created_by),
+    );
+    for (const row of creatorRows ?? []) {
+      const name = row.created_by ? creatorNames.get(row.created_by) : undefined;
+      if (name) processedByReservation.set(row.id, name);
+    }
 
     for (const payment of paymentRows ?? []) {
       activePaidByReservation.set(
@@ -999,7 +1016,7 @@ export default async function ReservationsPage({
         ) : (
           <>
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[1100px] border-collapse text-left text-sm">
+              <table className="w-full min-w-[1220px] border-collapse text-left text-sm">
                 <thead className="border-b border-border bg-canvas text-[11px] uppercase tracking-[0.12em] text-muted">
                   <tr>
                     {bulkEnabled && (
@@ -1037,6 +1054,7 @@ export default async function ReservationsPage({
                               : "Reserved"}
                       </SortLink>
                     </th>
+                    <th className="px-3 py-2.5 font-bold">Processed by</th>
                     <th className="px-3 py-2.5 text-right font-bold">Actions</th>
                   </tr>
                 </thead>
@@ -1142,6 +1160,22 @@ export default async function ReservationsPage({
                         </td>
                         <td className="whitespace-nowrap px-3 py-3 text-muted">
                           {formatDate(operationalDate)}
+                        </td>
+                        <td className="px-3 py-3 text-sm text-ink">
+                          {(() => {
+                            const names = [
+                              ...new Set(
+                                group.items
+                                  .map((reservation) => processedByReservation.get(reservation.id))
+                                  .filter((name): name is string => Boolean(name)),
+                              ),
+                            ];
+                            return names.length ? (
+                              <span className="font-semibold">{names.join(", ")}</span>
+                            ) : (
+                              <span className="text-muted">—</span>
+                            );
+                          })()}
                         </td>
                         <td className="px-3 py-3">
                           <GroupActions
