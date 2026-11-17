@@ -198,7 +198,7 @@ export function AccountsTable({
                             <option value="viewer">viewer</option>
                           </select>
                           <button
-                            className={buttonClass + " bg-gold text-white hover:bg-gold-dark"}
+                            className={"btn-save " + buttonClass + " bg-gold text-white hover:bg-gold-dark"}
                             type="submit"
                           >
                             Set

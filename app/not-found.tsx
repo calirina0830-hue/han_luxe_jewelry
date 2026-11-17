@@ -10,7 +10,7 @@ export default function NotFound() {
           The page you requested does not exist or is no longer available.
         </p>
         <Link
-          className="mt-7 inline-flex rounded-xl bg-ink px-5 py-3 text-sm font-bold text-white"
+          className="btn-back mt-7 inline-flex rounded-xl bg-primary px-5 py-3 text-sm font-bold text-on-primary"
           href="/reservations"
         >
           Return to reservations

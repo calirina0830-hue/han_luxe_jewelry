@@ -54,7 +54,7 @@ export function SubmitButton({ children }: { children: string }) {
 
   return (
     <button
-      className="flex h-12 w-full items-center justify-center rounded-xl bg-gold px-5 text-sm font-bold text-white shadow-[0_10px_30px_rgba(139,100,46,0.18)] transition hover:bg-gold-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold disabled:cursor-wait disabled:opacity-65"
+      className="btn-save flex h-12 w-full items-center justify-center rounded-xl bg-gold px-5 text-sm font-bold text-white transition hover:bg-gold-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold disabled:cursor-wait disabled:opacity-65"
       disabled={pending}
       type="submit"
     >

@@ -154,7 +154,7 @@ test("invoice document renders every item without dropping order dates", () => {
   }));
   const document = buildInvoiceDocDefinition({
     business: {
-      name: "AC Pearls and Jewels",
+      name: "HAN Luxe Jewelry",
       descriptor: "Fine jewelry",
       systemLabel: "Reservation System",
     },
@@ -193,7 +193,7 @@ test("invoice document renders every item without dropping order dates", () => {
 test("invoice PDF includes the remaining downpayment balance", () => {
   const document = buildInvoiceDocDefinition({
     business: {
-      name: "AC Pearls and Jewels",
+      name: "HAN Luxe Jewelry",
       descriptor: "Fine jewelry",
       systemLabel: "Reservation System",
     },
@@ -245,7 +245,7 @@ test("invoice PDF includes the remaining downpayment balance", () => {
 test("shipment document records the shipment number and quantities", () => {
   const document = buildShipmentDocDefinition({
     business: {
-      name: "AC Pearls and Jewels",
+      name: "HAN Luxe Jewelry",
       descriptor: "Fine jewelry",
       systemLabel: "Reservation System",
     },
@@ -275,7 +275,7 @@ test("shipment document records the shipment number and quantities", () => {
 test("delivery invoice renders the remaining downpayment balance", async () => {
   const document = buildShipmentDocDefinition({
     business: {
-      name: "AC Pearls and Jewels",
+      name: "HAN Luxe Jewelry",
       descriptor: "Fine jewelry",
       systemLabel: "Reservation System",
     },

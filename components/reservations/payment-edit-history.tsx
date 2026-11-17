@@ -32,7 +32,7 @@ export function PaymentEditHistory({
   return (
     <>
       <button
-        className="rounded-lg border border-border bg-white px-3 py-1.5 text-sm font-semibold text-ink transition hover:border-gold hover:bg-canvas"
+        className="btn-edit rounded-lg border border-border bg-white px-3 py-1.5 text-sm font-semibold text-ink transition hover:border-gold hover:bg-canvas"
         onClick={() => setOpen(true)}
         type="button"
       >
@@ -115,7 +115,7 @@ export function PaymentEditHistory({
 
             <div className="mt-5 flex justify-end">
               <button
-                className="h-10 rounded-lg border border-border px-4 text-sm font-semibold text-ink hover:bg-canvas"
+                className="btn-back h-10 rounded-lg border border-border px-4 text-sm font-semibold text-ink hover:bg-canvas"
                 onClick={() => setOpen(false)}
                 type="button"
               >

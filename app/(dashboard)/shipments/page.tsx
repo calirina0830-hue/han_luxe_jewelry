@@ -188,7 +188,7 @@ export default async function ShipmentsPage({
       >
         {profile?.role && (
           <Link
-            className="inline-flex h-9 items-center rounded-lg px-2 text-sm font-semibold text-muted transition hover:bg-white hover:text-ink"
+            className="btn-back inline-flex h-9 items-center rounded-lg px-2 text-sm font-semibold text-muted transition hover:bg-white hover:text-ink"
             href="/reservations"
           >
             &larr; Reservations
@@ -221,7 +221,7 @@ export default async function ShipmentsPage({
               className={
                 "rounded-xl border px-4 py-2.5 text-sm font-bold transition " +
                 (active
-                  ? "border-ink bg-ink text-white"
+                  ? "border-primary bg-primary text-on-primary"
                   : "border-border bg-white text-muted hover:border-gold hover:text-ink")
               }
               href={"/shipments?" + params.toString()}
@@ -291,7 +291,7 @@ export default async function ShipmentsPage({
               type="date"
             />
           </label>
-          <button className="h-11 rounded-xl bg-ink px-5 text-sm font-bold text-white transition hover:bg-ink/90" type="submit">
+          <button className="btn-save h-11 rounded-xl bg-primary px-5 text-sm font-bold text-on-primary transition hover:bg-primary-hover" type="submit">
             Apply
           </button>
         </div>

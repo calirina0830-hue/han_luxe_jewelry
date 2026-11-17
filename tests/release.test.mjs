@@ -515,7 +515,7 @@ test("shipments index page lists releases and fixes the /shipments route", async
 test("release PDF records the applied downpayment", () => {
   const document = buildShipmentDocDefinition({
     business: {
-      name: "AC Pearls and Jewels",
+      name: "HAN Luxe Jewelry",
       descriptor: "Fine jewelry",
       systemLabel: "Reservation System",
     },
@@ -546,7 +546,7 @@ test("release PDF records the applied downpayment", () => {
 test("release PDF shows the released subtotal and the balance owed", () => {
   const document = buildShipmentDocDefinition({
     business: {
-      name: "AC Pearls and Jewels",
+      name: "HAN Luxe Jewelry",
       descriptor: "Fine jewelry",
       systemLabel: "Reservation System",
     },

@@ -3,7 +3,7 @@ import { formatCurrency, formatManilaDate, formatOrderDateTime } from "@/lib/for
 import type { PdfContent, PdfDocumentDefinition } from "@/lib/reservations/invoice-document";
 import type { CustomerInvoice } from "@/lib/reservations/customer-invoice";
 
-// Palette taken from the AC Pearls and Jewels invoice design: pink
+// Palette taken from the HAN Luxe Jewelry invoice design: pink
 // bands, gold accents and a blush-white page.
 const MAROON = "#c93d6e";
 const GOLD = "#b8862f";
@@ -279,9 +279,9 @@ export function buildCustomerInvoiceDocDefinition(
         {
           width: 220,
           stack: [
-            { text: "AC", fontSize: 40, bold: true, color: GOLD_BRIGHT, characterSpacing: 2 },
-            { text: "PEARLS AND", fontSize: 12, bold: true, color: CREAM_TEXT, characterSpacing: 1.6, margin: [0, -4, 0, 0] },
-            { text: "JEWELS", fontSize: 12, bold: true, color: CREAM_TEXT, characterSpacing: 1.6, margin: [0, 0, 0, 0] },
+            { text: "HAN", fontSize: 40, bold: true, color: GOLD_BRIGHT, characterSpacing: 2 },
+            { text: "LUXE", fontSize: 12, bold: true, color: CREAM_TEXT, characterSpacing: 1.6, margin: [0, -4, 0, 0] },
+            { text: "JEWELRY", fontSize: 12, bold: true, color: CREAM_TEXT, characterSpacing: 1.6, margin: [0, 0, 0, 0] },
           ],
         },
         {
@@ -417,7 +417,7 @@ export function buildCustomerInvoiceDocDefinition(
           margin: [0, 40, 0, 0],
         },
         {
-          text: "AC PEARLS AND JEWELS!",
+          text: "HAN LUXE JEWELRY!",
           bold: true,
           fontSize: 15,
           characterSpacing: 1.2,

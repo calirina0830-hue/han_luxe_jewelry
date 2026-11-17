@@ -58,7 +58,7 @@ export function GroupActions({
   if (canWrite && settleable.length) {
     inline.push(
       <Link
-        className={linkClass + " text-emerald-700"}
+        className={"tx-save " + linkClass + " text-emerald-700"}
         href={buildBulkPaymentHref(settleable.map((r) => r.id)) + "&mode=settle"}
         key="settle"
       >
@@ -74,7 +74,7 @@ export function GroupActions({
   if (editTarget) {
     inline.push(
       <Link
-        className={linkClass + " text-ink"}
+        className={"tx-edit " + linkClass + " text-ink"}
         href={editHrefFor(editTarget.id)}
         key="edit"
         scroll={false}
@@ -131,7 +131,7 @@ export function ReservationOrderActions({
       if (isAdmin && !archived && reservation.status === "paid") {
         entries.push(
           <Link
-            className="text-sm font-semibold text-red-700 hover:underline"
+            className="tx-danger text-sm font-semibold text-red-700 hover:underline"
             href={"/reservations/bulk/revert?ids=" + reservation.id}
             key="revert"
           >

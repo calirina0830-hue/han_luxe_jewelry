@@ -830,7 +830,7 @@ export default async function ReservationsPage({
               className={
                 "rounded-xl border px-4 py-2.5 text-sm font-bold transition " +
                 (active
-                  ? "border-ink bg-ink text-white"
+                  ? "border-primary bg-primary text-on-primary"
                   : "border-border bg-white text-muted hover:border-gold hover:text-ink")
               }
               href={"/reservations?" + params.toString()}

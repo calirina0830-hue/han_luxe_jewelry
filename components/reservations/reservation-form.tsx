@@ -252,7 +252,7 @@ export function ReservationForm({
             <p className="text-sm font-semibold text-ink">Customer</p>
             {!initialValue && (
               <button
-                className="text-sm font-semibold text-gold-dark hover:underline"
+                className="tx-save text-sm font-semibold text-gold-dark hover:underline"
                 onClick={() => handleOpenCustomerModal(customerSearch)}
                 type="button"
               >
@@ -514,7 +514,7 @@ export function ReservationForm({
           })}
         </div>
         <button
-          className="mt-2 w-fit shrink-0 text-sm font-bold text-gold-dark hover:underline"
+          className="tx-save mt-2 w-fit shrink-0 text-sm font-bold text-gold-dark hover:underline"
           onClick={() => setItems((current) => [...current, createBlankItem()])}
           type="button"
         >
@@ -610,7 +610,7 @@ export function ReservationForm({
           </div>
           <div className="ml-auto flex items-center gap-3">
             <Link
-              className="inline-flex h-11 items-center rounded-xl px-3 text-sm font-semibold text-muted hover:text-ink"
+              className="btn-back inline-flex h-11 items-center rounded-xl px-3 text-sm font-semibold text-muted hover:text-ink"
               href={
                 cancelHref ?? "/reservations"
               }
@@ -762,14 +762,14 @@ function InlineCustomerModal({
 
           <div className="flex items-center justify-end gap-3 border-t border-border pt-4">
             <button
-              className="rounded-xl border border-border px-4 py-2 text-sm font-semibold text-ink hover:bg-canvas"
+              className="btn-back rounded-xl border border-border px-4 py-2 text-sm font-semibold text-ink hover:bg-canvas"
               onClick={onClose}
               type="button"
             >
               Cancel
             </button>
             <button
-              className="rounded-xl bg-gold px-5 py-2 text-sm font-bold text-ink shadow transition hover:bg-gold-light disabled:opacity-50"
+              className="btn-save rounded-xl bg-gold px-5 py-2 text-sm font-bold text-ink shadow transition hover:bg-gold-light disabled:opacity-50"
               disabled={loading}
               type="submit"
             >
@@ -970,7 +970,7 @@ function CustomerCombobox({
               <p className="text-xs text-muted">No matching customers.</p>
               {onAddNew && (
                 <button
-                  className="mt-2 text-xs font-bold text-gold-dark hover:underline"
+                  className="tx-save mt-2 text-xs font-bold text-gold-dark hover:underline"
                   onClick={() => {
                     setOpen(false);
                     onAddNew(search.trim());

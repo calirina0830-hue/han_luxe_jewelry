@@ -58,10 +58,10 @@ export default async function RevertPaidReservationsPage({
             <textarea className="relative z-10 mt-2 min-h-32 w-full pointer-events-auto rounded-xl border border-border bg-white px-4 py-3 font-normal outline-none focus:border-gold focus:ring-4 focus:ring-gold/10" maxLength={1000} minLength={3} name="reason" placeholder="Payment was recorded against the wrong reservation." required />
           </label>
           <div className="mt-5 flex flex-wrap gap-3">
-            <button className="rounded-xl bg-red-700 px-6 py-3 text-sm font-bold text-white" type="submit">
+            <button className="btn-danger rounded-xl bg-red-700 px-6 py-3 text-sm font-bold text-white" type="submit">
               Void Payments and Revert to Reserved
             </button>
-            <Link className="rounded-xl border border-border px-5 py-3 text-sm font-semibold text-ink" href="/reservations?status=paid">Cancel</Link>
+            <Link className="btn-back rounded-xl border border-border px-5 py-3 text-sm font-semibold text-ink" href="/reservations?status=paid">Cancel</Link>
           </div>
         </form>
       </section>

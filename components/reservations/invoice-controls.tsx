@@ -90,7 +90,7 @@ export function InvoiceNotes({
               {feedback?.message ?? (notes ? "Saved notes appear on the printed invoice." : "No notes saved.")}
             </p>
             <button
-              className="inline-flex h-9 items-center rounded-lg bg-ink px-4 text-xs font-bold text-white hover:bg-gold-dark disabled:opacity-50"
+              className="btn-save inline-flex h-9 items-center rounded-lg bg-primary px-4 text-xs font-bold text-on-primary hover:bg-primary-hover disabled:opacity-50"
               disabled={pending}
               type="submit"
             >

@@ -80,7 +80,7 @@ function describeOrderStatus(invoice: CustomerInvoice): {
 }
 
 const primaryButton =
-  "inline-flex h-10 items-center rounded-xl bg-ink px-4 text-sm font-bold text-white transition hover:bg-gold-dark disabled:cursor-not-allowed disabled:opacity-50";
+  "inline-flex h-10 items-center rounded-xl bg-primary px-4 text-sm font-bold text-on-primary transition hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50";
 const secondaryButton =
   "inline-flex h-10 items-center rounded-xl border border-border bg-white px-4 text-sm font-semibold text-ink transition hover:border-gold hover:bg-canvas disabled:cursor-not-allowed disabled:opacity-50";
 
@@ -471,7 +471,7 @@ export function CustomerInvoicePreview({
         }}
       >
         <article
-          className="relative overflow-hidden rounded-3xl border border-border bg-[#fbf5e9] shadow-card"
+          className="invoice-paper relative overflow-hidden rounded-3xl border border-border bg-[#0f1a16] text-ink shadow-card"
           data-print-root
           ref={invoiceRef}
         >
@@ -497,9 +497,9 @@ export function CustomerInvoicePreview({
                 <button
                   className={
                     (confirming === "cancelled"
-                      ? "bg-red-700 hover:bg-red-800"
-                      : "bg-ink hover:bg-gold-dark") +
-                    " inline-flex h-8 items-center rounded-lg px-3 text-sm font-bold text-white transition disabled:opacity-50"
+                      ? "btn-danger bg-red-700 text-white hover:bg-red-800"
+                      : "btn-save bg-primary text-on-primary hover:bg-primary-hover") +
+                    " inline-flex h-8 items-center rounded-lg px-3 text-sm font-bold transition disabled:opacity-50"
                   }
                   disabled={busy}
                   onClick={() =>
@@ -512,7 +512,7 @@ export function CustomerInvoicePreview({
                   {busy ? "Working…" : "Yes"}
                 </button>
                 <button
-                  className="h-8 rounded-lg px-2 text-sm font-semibold text-muted hover:text-ink"
+                  className="btn-back h-8 rounded-lg px-2 text-sm font-semibold text-muted hover:text-ink"
                   disabled={busy}
                   onClick={() => setConfirming(null)}
                   type="button"
@@ -525,7 +525,7 @@ export function CustomerInvoicePreview({
                 <>
                   {releasableItems.length > 0 && (
                     <button
-                      className={primaryButton}
+                      className={"btn-save " + primaryButton}
                       disabled={busy}
                       onClick={() => askToConfirm("release")}
                       title="Mark the ticked items as released to the customer"
@@ -537,7 +537,7 @@ export function CustomerInvoicePreview({
                   )}
                   {payableReservationIds.length > 0 && (
                     <Link
-                      className="inline-flex h-10 items-center rounded-xl bg-emerald-700 px-4 text-sm font-bold text-white transition hover:bg-emerald-800"
+                      className={secondaryButton + " font-bold"}
                       href={buildBulkPaymentHref(payableReservationIds)}
                       title="Opens the payment form with the full balance filled in. Paying it in full moves the order to Paid."
                     >
@@ -546,7 +546,7 @@ export function CustomerInvoicePreview({
                   )}
                   {movable.cancelled.length > 0 && (
                     <button
-                      className={secondaryButton + " text-red-700 hover:border-red-300"}
+                      className={"btn-danger " + secondaryButton}
                       disabled={busy}
                       onClick={() => askToConfirm("cancelled")}
                       type="button"
@@ -560,7 +560,7 @@ export function CustomerInvoicePreview({
             {canWrite &&
               editTarget && (
                 <Link
-                  className={secondaryButton}
+                  className={secondaryButton + " text-muted"}
                   href={editBaseHref + "&editOrder=" + editTarget.id}
                   scroll={false}
                 >
@@ -743,7 +743,7 @@ export function CustomerInvoicePreview({
                     {release.itemLabels.join(", ")}
                   </span>
                   <button
-                    className="h-8 rounded-lg bg-ink px-3 text-xs font-bold text-white hover:bg-gold-dark disabled:opacity-50"
+                    className="btn-save h-8 rounded-lg bg-primary px-3 text-xs font-bold text-on-primary hover:bg-primary-hover disabled:opacity-50"
                     disabled={busy}
                     onClick={() =>
                       void resolvePendingRelease(release.reservationId, release.shipmentId, "confirm")
@@ -766,28 +766,28 @@ export function CustomerInvoicePreview({
               ))}
           </div>
 
-          <header className="flex flex-col gap-4 border-b-4 border-[#d9b15f] bg-gradient-to-r from-[#5c0c1b] via-[#7a1424] to-[#6a1020] px-6 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+          <header className="flex flex-col gap-4 border-b-2 border-[#d9b15f] bg-gradient-to-r from-[#0b2c1f] via-[#0f3a29] to-[#0b2c1f] px-6 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
             <div>
               <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#e9c46a]">
                 {BUSINESS.descriptor}
               </p>
-              <h2 className="mt-1 font-serif text-2xl text-[#fff7e6]">{BUSINESS.name}</h2>
+              <h2 className="mt-1 font-serif text-3xl text-[#f6f1e4]">{BUSINESS.name}</h2>
             </div>
             <div className="text-xs sm:text-right">
-              <p className="inline-block rounded-full border-2 border-[#e9c46a] bg-[#fbf5e9] px-5 py-1 font-serif text-2xl uppercase tracking-[0.12em] text-[#7a1424]">
+              <p className="inline-block rounded-full border-2 border-[#d9b15f] bg-transparent px-5 py-1 font-serif text-2xl uppercase tracking-[0.18em] text-[#e9c46a]">
                 Invoice
               </p>
               {invoice.invoiceDate && (
-                <p className="mt-2 text-[#f3e3c3]">
+                <p className="mt-2 text-[#c9d6cd]">
                   Latest order:{" "}
                   <span className="font-semibold text-white">
                     {formatDate(invoice.invoiceDate)}
                   </span>
                 </p>
               )}
-              <p className="text-[#f3e3c3]">
+              <p className="mt-1 text-[#c9d6cd]">
                 Status:{" "}
-                <span className="rounded-full bg-[#e9c46a] px-2 py-0.5 font-semibold text-[#7a1424]">
+                <span className="rounded-full bg-[#e9c46a] px-2 py-0.5 font-semibold text-[#0f3a29]">
                   {invoice.statusLabel}
                 </span>
               </p>
@@ -796,10 +796,10 @@ export function CustomerInvoicePreview({
 
           <section className="grid gap-4 border-b border-border px-6 py-5 sm:grid-cols-[1fr_auto] sm:px-8">
             <div>
-              <p className="inline-flex items-center rounded-r-full bg-gradient-to-r from-[#5c0c1b] to-[#7a1424] py-1 pl-4 pr-5 text-[10px] font-bold uppercase tracking-[0.18em] text-[#fbe7b5]">
+              <p className="inline-flex items-center rounded-r-full bg-[#1f7a4d] py-1 pl-4 pr-5 text-[10px] font-bold uppercase tracking-[0.18em] text-white">
                 Order for
               </p>
-              <p className="mt-2 font-serif text-xl font-bold text-[#7a1424]">{invoice.customerName}</p>
+              <p className="mt-3 text-xl font-bold text-[#f6f1e4]">{invoice.customerName}</p>
               {customerDetails.length > 0 && (
                 <dl className="mt-1 space-y-0.5 text-sm leading-5">
                   {customerDetails.map(([label, value]) => (
@@ -824,27 +824,27 @@ export function CustomerInvoicePreview({
           </section>
 
           <section className="px-6 py-5 sm:px-8">
-            <div className="overflow-x-auto rounded-2xl border-2 border-[#e0b75a]">
+            <div className="overflow-x-auto rounded-2xl border border-[#d9b15f]/60">
               <table className="w-full min-w-[600px] border-collapse text-left">
                 <thead>
-                  <tr className="bg-gradient-to-b from-[#8a1b2b] to-[#6a0f1e] text-[10px] font-semibold uppercase tracking-[0.12em] text-[#fff3d6]">
+                  <tr className="bg-[#0f3a29] text-[10px] font-semibold uppercase tracking-[0.12em] text-[#e9c46a]">
                     <th className="w-8 px-3 py-2.5" data-print-hide>
                       <input
                         aria-label={allIncluded ? "Leave out all items" : "Include all items"}
                         checked={allIncluded}
-                        className="h-4 w-4 rounded border-border accent-ink"
+                        className="h-4 w-4 rounded border-border accent-[#1f9d55]"
                         onChange={toggleAll}
                         type="checkbox"
                       />
                     </th>
-                    <th className="px-3 py-2.5 font-bold">Date</th>
-                    <th className="px-3 py-2.5 font-bold">Item</th>
-                    <th className="px-3 py-2.5 text-right font-bold">Qty</th>
-                    <th className="px-3 py-2.5 text-right font-bold">Unit price</th>
-                    <th className="px-3 py-2.5 text-right font-bold">Amount</th>
+                    <th className="px-3 py-3 font-bold">Date</th>
+                    <th className="px-3 py-3 font-bold">Item</th>
+                    <th className="px-3 py-3 text-right font-bold">Qty</th>
+                    <th className="px-3 py-3 text-right font-bold">Unit price</th>
+                    <th className="px-3 py-3 text-right font-bold">Amount</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-border/80 text-[13px]">
+                <tbody className="divide-y divide-[#d9b15f]/20 text-[13px] text-[#f6f1e4]">
                   {invoice.items.length === 0 && (
                     <tr>
                       <td className="py-6 text-center text-muted" colSpan={6}>
@@ -857,18 +857,18 @@ export function CustomerInvoicePreview({
                     return (
                       <tr
                         className={
-                          included ? "even:bg-canvas/35" : "opacity-40 print:hidden"
+                          included ? "even:bg-white/[0.02]" : "opacity-40 print:hidden"
                         }
                         data-print-hide={included ? undefined : true}
                         key={item.id}
                       >
-                        <td className="px-3 py-3 align-top" data-print-hide>
+                        <td className="px-3 py-3.5 align-top" data-print-hide>
                           <input
                             aria-label={
                               (included ? "Leave out " : "Include ") + item.itemName
                             }
                             checked={included}
-                            className="h-4 w-4 rounded border-border accent-ink"
+                            className="h-4 w-4 rounded border-border accent-[#1f9d55]"
                             onChange={() => toggleItem(item.id)}
                             type="checkbox"
                           />
@@ -918,11 +918,11 @@ export function CustomerInvoicePreview({
             <InvoiceTotal count label="Total quantity" value={displayInvoice.totals.quantity} />
             <InvoiceTotal emphasize label="Total item" value={displayInvoice.totals.total} />
             <InvoiceTotal label="Downpayment" value={displayInvoice.totals.amountPaid} />
-            <div className="mt-3 flex items-center justify-between gap-4 rounded-2xl border-2 border-[#e0b75a] bg-gradient-to-r from-[#5c0c1b] via-[#7a1424] to-[#5c0c1b] px-5 py-4 shadow-md">
-              <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#fbe7b5]">
+            <div className="mt-4 flex items-center justify-between gap-4 rounded-2xl border border-[#d9b15f]/70 bg-gradient-to-r from-[#0b2c1f] via-[#0f3a29] to-[#0b2c1f] px-5 py-4 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
+              <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#e9c46a]">
                 {orderStatus.label === "Cancelled" ? "Order cancelled" : "Balance due"}
               </span>
-              <span className="whitespace-nowrap font-serif text-2xl font-bold tabular-nums text-[#f6dd9a]">
+              <span className="whitespace-nowrap text-2xl font-bold tabular-nums text-[#f6f1e4]">
                 {orderStatus.label === "Cancelled"
                   ? "Nothing due"
                   : formatCurrency(displayInvoice.totals.balance)}
@@ -943,11 +943,11 @@ export function CustomerInvoicePreview({
             </details>
           )}
 
-          <footer className="border-t-4 border-[#d9b15f] bg-gradient-to-r from-[#5c0c1b] via-[#7a1424] to-[#5c0c1b] px-6 py-5 text-center sm:px-8">
-            <p className="font-serif text-base italic text-[#fff3d6]">
+          <footer className="border-t-2 border-[#d9b15f] bg-gradient-to-r from-[#0b2c1f] via-[#0f3a29] to-[#0b2c1f] px-6 py-6 text-center sm:px-8">
+            <p className="font-serif text-base italic text-[#f6f1e4]">
               Thank you for shopping with
             </p>
-            <p className="mt-1 font-serif text-lg font-bold uppercase tracking-[0.12em] text-[#e9c46a]">
+            <p className="mt-1 text-lg font-bold uppercase tracking-[0.14em] text-[#e9c46a]">
               {BUSINESS.name}!
             </p>
           </footer>
@@ -979,7 +979,7 @@ function InvoiceTotal({
       className={
         "flex items-baseline justify-between gap-6 text-sm " +
         (emphasize
-          ? "mt-1 border-y border-[#e0b75a] bg-gradient-to-r from-[#f3d98a] via-[#fbe9b8] to-[#f3d98a] px-3 py-2 font-bold text-[#2b1d1d]"
+          ? "mt-1 border-y border-[#d9b15f]/40 bg-[#143528] px-3 py-2.5 font-bold text-[#f6f1e4]"
           : "border-b border-border/60 py-1.5 text-muted")
       }
     >

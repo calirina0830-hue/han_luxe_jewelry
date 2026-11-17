@@ -1,19 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  --color-canvas: #fafaf8;
-  --color-gold: #b88a44;
-  --color-gold-dark: #8b642e;
-  --color-gold-light: #d7b77f;
-  --color-gold-soft: #f5eddf;
-  --color-ink: #27231e;
-  --color-muted: #77736d;
-  --color-border: #e8e3db;
+  --color-canvas: #f3f6f4;
+  --color-gold: #17694d;
+  --color-gold-dark: #0f513b;
+  --color-gold-light: #5cc29a;
+  --color-gold-soft: #dcefe6;
+  --color-ink: #091315;
+  --color-muted: #5f6f6b;
+  --color-border: #dbe4df;
+  /* Neutral buttons and active chips. (The "gold" tokens above are now
+     neutral accents; the names are kept so existing classes keep working.) */
+  --color-primary: #091315;
+  --color-primary-hover: #17453d;
+  --color-on-primary: #ffffff;
+  /* Source Sans 3 (formerly Source Sans Pro) is loaded by next/font in
+     app/layout.tsx as --font-source-sans. */
   --font-sans:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    var(--font-source-sans), ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", sans-serif;
-  --font-serif: Georgia, "Times New Roman", serif;
-  --shadow-card: 0 18px 50px rgba(39, 35, 30, 0.06);
+  --font-serif: var(--font-sans);
+  --shadow-card: 0 18px 50px rgba(9, 19, 21, 0.06);
 }
 
 /*
@@ -36,32 +43,35 @@
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --color-canvas: #121110;
-  --color-white: #1c1a17;
-  --color-ink: #ede7dd;
-  --color-muted: #a39d94;
-  --color-border: #35312b;
-  --color-gold: #c99a52;
-  --color-gold-dark: #dcb478;
-  --color-gold-light: #a9864f;
-  --color-gold-soft: #2c2418;
+  --color-canvas: #091315;
+  --color-white: #0f2326;
+  --color-ink: #f1f6f4;
+  --color-muted: #a3b6b2;
+  --color-border: #1f3b3c;
+  --color-gold: #3dbb8c;
+  --color-gold-dark: #6fd6ac;
+  --color-gold-light: #3dbb8c;
+  --color-gold-soft: #123a30;
+  --color-primary: #17453d;
+  --color-primary-hover: #1d574c;
+  --color-on-primary: #eaf5f1;
   --shadow-card: 0 18px 50px rgba(0, 0, 0, 0.35);
-  --color-stone-50: oklch(14.7% 0.004 49.25);
-  --color-stone-100: oklch(21.6% 0.006 56.043);
-  --color-stone-200: oklch(26.8% 0.007 34.298);
-  --color-stone-300: oklch(37.4% 0.01 67.558);
-  --color-stone-400: oklch(44.4% 0.011 73.639);
+  --color-stone-50: oklch(14.7% 0.025 185);
+  --color-stone-100: oklch(21.6% 0.025 185);
+  --color-stone-200: oklch(26.8% 0.025 185);
+  --color-stone-300: oklch(37.4% 0.025 185);
+  --color-stone-400: oklch(44.4% 0.025 185);
   --color-stone-500: oklch(55.3% 0.013 58.071);
   --color-stone-600: oklch(70.9% 0.01 56.259);
   --color-stone-700: oklch(86.9% 0.005 56.366);
   --color-stone-800: oklch(92.3% 0.003 48.717);
   --color-stone-900: oklch(97% 0.001 106.424);
   --color-stone-950: oklch(98.5% 0.001 106.423);
-  --color-neutral-50: oklch(14.5% 0 none);
-  --color-neutral-100: oklch(20.5% 0 none);
-  --color-neutral-200: oklch(26.9% 0 none);
-  --color-neutral-300: oklch(37.1% 0 none);
-  --color-neutral-400: oklch(43.9% 0 none);
+  --color-neutral-50: oklch(14.5% 0.025 185);
+  --color-neutral-100: oklch(20.5% 0.025 185);
+  --color-neutral-200: oklch(26.9% 0.025 185);
+  --color-neutral-300: oklch(37.1% 0.025 185);
+  --color-neutral-400: oklch(43.9% 0.025 185);
   --color-neutral-500: oklch(55.6% 0 none);
   --color-neutral-600: oklch(70.8% 0 none);
   --color-neutral-700: oklch(87% 0 none);
@@ -150,16 +160,19 @@
 :root[data-theme="dark"] .theme-light,
 :root[data-theme="dark"] [data-print-root] {
   color-scheme: light;
-  --color-canvas: #fafaf8;
-  --color-white: #fff;
-  --color-ink: #27231e;
-  --color-muted: #77736d;
-  --color-border: #e8e3db;
-  --color-gold: #b88a44;
-  --color-gold-dark: #8b642e;
-  --color-gold-light: #d7b77f;
-  --color-gold-soft: #f5eddf;
-  --shadow-card: 0 18px 50px rgba(39, 35, 30, 0.06);
+  --color-canvas: #f3f6f4;
+  --color-white: #ffffff;
+  --color-ink: #091315;
+  --color-muted: #5f6f6b;
+  --color-border: #dbe4df;
+  --color-gold: #17694d;
+  --color-gold-dark: #0f513b;
+  --color-gold-light: #5cc29a;
+  --color-gold-soft: #dcefe6;
+  --color-primary: #091315;
+  --color-primary-hover: #17453d;
+  --color-on-primary: #ffffff;
+  --shadow-card: 0 18px 50px rgba(9, 19, 21, 0.06);
   --color-stone-50: oklch(98.5% 0.001 106.423);
   --color-stone-100: oklch(97% 0.001 106.424);
   --color-stone-200: oklch(92.3% 0.003 48.717);
@@ -265,7 +278,7 @@
    the page's light dark-mode text. Not for .theme-light, whose panels are
    dark and set white text themselves. */
 :root[data-theme="dark"] [data-print-root] {
-  color: #27231e;
+  color: #091315;
 }
 
 /* Keep Chrome's autofill from painting inputs its own blue. */
@@ -327,26 +340,203 @@ summary::-webkit-details-marker {
   bottom: -20rem;
   width: 48rem;
   height: 48rem;
-  border: 1px solid rgba(215, 183, 127, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 9999px;
   background:
-    radial-gradient(circle, rgba(184, 138, 68, 0.14), transparent 60%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.04), transparent 60%),
     repeating-radial-gradient(
       circle,
       transparent 0,
       transparent 72px,
-      rgba(215, 183, 127, 0.06) 73px,
+      rgba(255, 255, 255, 0.06) 73px,
       transparent 74px
     );
+}
+
+/* Button colors by purpose. Plain (unlayered) CSS, so these win over any
+   Tailwind bg/text/border utility still on the element, hover included.
+     btn-back   Back, Cancel, Close, No         -> red outline
+     btn-danger Delete, Void, Archive, Revert   -> solid red
+     btn-save   Save, Apply, Confirm, Sign in   -> green
+     btn-edit   Edit                            -> blue
+   tx-* are the text-only versions for link-style buttons. */
+:root {
+  --btn-back-bg: #fff4f3;
+  --btn-back-bg-hover: #fde4e1;
+  --btn-back-text: #b42318;
+  --btn-back-border: #f4c7c2;
+  --btn-danger-bg: #b42318;
+  --btn-danger-bg-hover: #912018;
+  --btn-save-bg: #1f7a4d;
+  --btn-save-bg-hover: #17633e;
+  --btn-edit-bg: #eff4ff;
+  --btn-edit-bg-hover: #dfe8ff;
+  --btn-edit-text: #1d4ed8;
+  --btn-edit-border: #c6d5fd;
+}
+
+:root[data-theme="dark"] {
+  --btn-back-bg: rgba(240, 82, 70, 0.1);
+  --btn-back-bg-hover: rgba(240, 82, 70, 0.18);
+  --btn-back-text: #f4a199;
+  --btn-back-border: rgba(240, 120, 108, 0.35);
+  --btn-danger-bg: #c0352a;
+  --btn-danger-bg-hover: #d64236;
+  --btn-save-bg: #238553;
+  --btn-save-bg-hover: #2a9a61;
+  --btn-edit-bg: rgba(90, 140, 255, 0.12);
+  --btn-edit-bg-hover: rgba(90, 140, 255, 0.2);
+  --btn-edit-text: #a9c1ff;
+  --btn-edit-border: rgba(120, 160, 255, 0.35);
+}
+
+/* Light-palette panels inside dark mode (e.g. the login form). */
+:root[data-theme="dark"] .theme-light {
+  --btn-back-bg: #fff4f3;
+  --btn-back-bg-hover: #fde4e1;
+  --btn-back-text: #b42318;
+  --btn-back-border: #f4c7c2;
+  --btn-edit-bg: #eff4ff;
+  --btn-edit-bg-hover: #dfe8ff;
+  --btn-edit-text: #1d4ed8;
+  --btn-edit-border: #c6d5fd;
+}
+
+.btn-back {
+  border: 1px solid var(--btn-back-border);
+  background-color: var(--btn-back-bg);
+  color: var(--btn-back-text);
+}
+.btn-back:hover:not(:disabled) {
+  border-color: var(--btn-back-text);
+  background-color: var(--btn-back-bg-hover);
+  color: var(--btn-back-text);
+}
+
+.btn-danger,
+.btn-save {
+  border-color: transparent;
+  color: #ffffff;
+}
+.btn-danger {
+  background-color: var(--btn-danger-bg);
+}
+.btn-danger:hover:not(:disabled) {
+  background-color: var(--btn-danger-bg-hover);
+  color: #ffffff;
+}
+.btn-save {
+  background-color: var(--btn-save-bg);
+}
+.btn-save:hover:not(:disabled) {
+  background-color: var(--btn-save-bg-hover);
+  color: #ffffff;
+}
+
+.btn-edit {
+  border: 1px solid var(--btn-edit-border);
+  background-color: var(--btn-edit-bg);
+  color: var(--btn-edit-text);
+}
+.btn-edit:hover:not(:disabled) {
+  border-color: var(--btn-edit-text);
+  background-color: var(--btn-edit-bg-hover);
+  color: var(--btn-edit-text);
+}
+
+.tx-back,
+.tx-danger {
+  color: var(--btn-back-text);
+}
+.tx-save {
+  color: var(--btn-save-bg);
+}
+:root[data-theme="dark"] .tx-save {
+  color: #6fd09c;
+}
+.tx-edit {
+  color: var(--btn-edit-text);
+}
+
+/* Login form panel: a lighter green than the #091315 banner side, in both
+   Light and Dark mode. Inputs sit slightly darker than the panel. */
+.auth-form-panel {
+  color-scheme: dark;
+  --color-canvas: #0e1f22;
+  --color-white: #091719;
+  --color-ink: #e8efed;
+  --color-muted: #9bb0ac;
+  --color-border: #1c3335;
+  --color-gold: #e8efed;
+  --color-gold-dark: #c9d8d4;
+  --color-gold-light: #9bb0ac;
+  --color-gold-soft: #142a2c;
+  --btn-back-bg: rgba(240, 82, 70, 0.1);
+  --btn-back-bg-hover: rgba(240, 82, 70, 0.18);
+  --btn-back-text: #f4a199;
+  --btn-back-border: rgba(240, 120, 108, 0.35);
+  --btn-save-bg: #238553;
+  --btn-save-bg-hover: #2a9a61;
+}
+
+/* Screen invoice (components/reservations/customer-invoice-preview.tsx):
+   dark green paper with gold accents in every theme. The selector outranks
+   the [data-print-root] light-palette reset above. */
+:root [data-print-root].invoice-paper,
+:root[data-theme] [data-print-root].invoice-paper {
+  color-scheme: dark;
+  color: #f6f1e4;
+  --color-canvas: #13241d;
+  --color-white: #0f1a16;
+  --color-ink: #f6f1e4;
+  --color-muted: #9fb3a7;
+  --color-border: #233a30;
+  --color-gold: #d9b15f;
+  --color-gold-dark: #e9c46a;
+  --color-gold-light: #e9c46a;
+  --color-gold-soft: #1b2e25;
+  --color-amber-50: #3a2c0c;
+  --color-amber-200: #6b5418;
+  --color-amber-800: #f3cf7a;
+  --color-amber-900: #f8dc95;
+  --color-sky-50: #0e2a3a;
+  --color-sky-700: #8fd0f5;
+  --color-emerald-50: #0f3a29;
+  --color-emerald-700: #7fe0a8;
+  --color-red-50: #3a1210;
+  --color-red-700: #f4a199;
+  --color-stone-100: #1b2e25;
+  --color-stone-700: #c9d6cd;
+  --btn-back-bg: rgba(240, 82, 70, 0.1);
+  --btn-back-bg-hover: rgba(240, 82, 70, 0.18);
+  --btn-back-text: #f4a199;
+  --btn-back-border: rgba(240, 120, 108, 0.35);
+  --btn-save-bg: #1f7a4d;
+  --btn-save-bg-hover: #238553;
+  --btn-danger-bg: #b42318;
+  --btn-danger-bg-hover: #c0352a;
+}
+
+/* Login banner: fade every edge into the panel so it has no hard border.
+   Two gradient masks (horizontal and vertical) are intersected. */
+.banner-fade {
+  -webkit-mask-image:
+    linear-gradient(to right, transparent, #000 14%, #000 86%, transparent),
+    linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent, #000 14%, #000 86%, transparent),
+    linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+  mask-composite: intersect;
 }
 
 /* Top loading bar (components/layout/navigation-progress.tsx): grows quickly
    at first, then slows, so it always looks like it is still working. */
 .nav-progress {
   transform-origin: left;
-  background: linear-gradient(90deg, #d7b77f, #f4d58d, #d7b77f);
+  background: linear-gradient(90deg, #c4cbca, #ffffff, #c4cbca);
   background-size: 200% 100%;
-  box-shadow: 0 0 10px rgba(244, 213, 141, 0.75);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.75);
   animation:
     nav-progress 8s cubic-bezier(0.1, 0.8, 0.2, 1) forwards,
     nav-progress-shine 1s linear infinite;
@@ -370,8 +560,21 @@ summary::-webkit-details-marker {
   }
 }
 
+/* Text highlight: emerald tint that shows on both light and dark surfaces. */
 ::selection {
-  background: rgba(184, 138, 68, 0.22);
+  background: rgba(23, 105, 77, 0.28);
+  color: inherit;
+}
+
+:root[data-theme="dark"] ::selection {
+  background: rgba(61, 187, 140, 0.4);
+  color: #ffffff;
+}
+
+/* Light panels inside dark mode (sidebar, Account Management header). */
+:root[data-theme="dark"] .theme-light ::selection {
+  background: rgba(61, 187, 140, 0.4);
+  color: #ffffff;
 }
 
 @media (prefers-reduced-motion: reduce) {

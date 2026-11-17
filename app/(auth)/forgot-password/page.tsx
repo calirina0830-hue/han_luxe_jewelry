@@ -12,7 +12,7 @@ export default function ForgotPasswordPage() {
       description="Enter your email or username and we will send a secure password reset link."
       eyebrow="Account recovery"
       footer={
-        <Link className="font-bold text-gold-dark hover:underline" href="/login">
+        <Link className="tx-back font-bold text-gold-dark hover:underline" href="/login">
           Return to sign in
         </Link>
       }

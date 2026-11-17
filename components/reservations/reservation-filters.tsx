@@ -242,7 +242,7 @@ export function ReservationFilters({
         </label>
         <div className="flex flex-wrap items-center gap-2 sm:col-span-2 lg:col-span-1">
           <button
-            className="h-10 rounded-lg bg-ink px-4 text-sm font-bold text-white transition hover:bg-ink/90 disabled:opacity-50"
+            className="h-10 rounded-lg bg-primary px-4 text-sm font-bold text-on-primary transition hover:bg-primary-hover disabled:opacity-50"
             disabled={isPending}
             type="submit"
           >

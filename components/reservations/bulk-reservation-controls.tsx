@@ -250,8 +250,8 @@ export function BulkSubmitButton({
       className={
         "h-10 w-full rounded-xl px-4 text-sm font-bold transition disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto " +
         (tone === "danger"
-          ? "bg-red-700 text-white"
-          : "bg-ink text-white")
+          ? "btn-danger bg-red-700 text-white"
+          : "bg-primary text-on-primary")
       }
       disabled={selectedIds.length === 0}
       name="operation"

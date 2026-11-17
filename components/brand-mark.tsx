@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { BUSINESS } from "@/lib/constants/business";
 
 type BrandMarkProps = {
@@ -5,25 +7,22 @@ type BrandMarkProps = {
   light?: boolean;
 };
 
+// Square logo from public/brand/han-logo.png (source: img/Website square).
 export function BrandMark({ compact = false, light = false }: BrandMarkProps) {
   return (
     <div className="flex items-center gap-3" aria-label={BUSINESS.name}>
-      <span
-        className={
-          "grid size-10 rotate-45 place-items-center rounded-[10px] border " +
-          (light
-            ? "border-white/30 bg-white/10"
-            : "border-gold/35 bg-gold-soft")
-        }
+      <Image
+        alt=""
         aria-hidden="true"
-      >
-        <span
-          className={
-            "size-3 rounded-sm border " +
-            (light ? "border-gold-light bg-gold-light/20" : "border-gold bg-white")
-          }
-        />
-      </span>
+        className={
+          "size-12 shrink-0 rounded-xl border " +
+          (light ? "border-white/10" : "border-border")
+        }
+        height={96}
+        priority
+        src="/brand/han-logo.png"
+        width={96}
+      />
       {!compact && (
         <span className="leading-none">
           <span

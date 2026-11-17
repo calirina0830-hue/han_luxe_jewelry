@@ -51,7 +51,7 @@ export function OrderDateEditor({
         </span>
         {canEdit && (
           <button
-            className="text-xs font-semibold text-gold-dark hover:underline"
+            className="tx-save text-xs font-semibold text-gold-dark hover:underline"
             onClick={() => {
               setError(null);
               setEditing(true);
@@ -93,7 +93,7 @@ export function OrderDateEditor({
       />
       <div className="flex items-center gap-2">
         <button
-          className="inline-flex h-8 items-center rounded-lg bg-ink px-3 text-xs font-bold text-white hover:bg-gold-dark disabled:opacity-50"
+          className="btn-save inline-flex h-8 items-center rounded-lg bg-primary px-3 text-xs font-bold text-on-primary hover:bg-primary-hover disabled:opacity-50"
           disabled={pending || !value}
           onClick={save}
           type="button"
@@ -101,7 +101,7 @@ export function OrderDateEditor({
           {pending ? "Saving..." : "Save"}
         </button>
         <button
-          className="text-xs font-semibold text-muted hover:underline"
+          className="tx-back text-xs font-semibold text-muted hover:underline"
           onClick={() => {
             setEditing(false);
             setValue(orderedAt ? toLocalInputValue(orderedAt) : "");

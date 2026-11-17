@@ -62,7 +62,7 @@ export function PaymentFormActions({
         </button>
       )}
       <button
-        className="rounded-xl border border-border px-5 py-3 text-sm font-semibold text-ink disabled:cursor-not-allowed disabled:opacity-50"
+        className="btn-back rounded-xl border border-border px-5 py-3 text-sm font-semibold text-ink disabled:cursor-not-allowed disabled:opacity-50"
         disabled={pending}
         onClick={(event) =>
           resetAndNavigate(event.currentTarget.form, cancelHref)

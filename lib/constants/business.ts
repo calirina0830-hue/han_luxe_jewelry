@@ -1,6 +1,6 @@
 export const BUSINESS = {
-  name: "AC Pearls and Jewels",
-  shortName: "AC",
-  descriptor: "Pearl & Jewelries",
+  name: "HAN Luxe Jewelry",
+  shortName: "HAN",
+  descriptor: "Luxe Jewelry",
   systemLabel: "Reservation Management",
 } as const;

@@ -57,14 +57,14 @@ export default async function CustomerDetailsPage({
         title={customer.name}
       >
         <Link
-          className="inline-flex h-11 items-center rounded-xl border border-border bg-white px-5 text-sm font-semibold text-ink hover:border-gold"
+          className="btn-back inline-flex h-11 items-center rounded-xl border border-border bg-white px-5 text-sm font-semibold text-ink hover:border-gold"
           href="/customers"
         >
           Back to customers
         </Link>
         {canWrite && (!customer.archived_at || isAdmin) && (
           <Link
-            className="inline-flex h-11 items-center rounded-xl bg-gold px-5 text-sm font-bold text-white hover:bg-gold-dark"
+            className="btn-edit inline-flex h-11 items-center rounded-xl bg-gold px-5 text-sm font-bold text-white hover:bg-gold-dark"
             href={"/customers/" + customer.id + "/edit"}
           >
             Edit customer

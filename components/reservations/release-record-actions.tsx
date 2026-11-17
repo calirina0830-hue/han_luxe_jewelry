@@ -172,10 +172,10 @@ export function ReleaseRecordActions({
               </label>
               {feedback && <p className="mt-3 text-sm text-red-700">{feedback}</p>}
               <div className="mt-4 flex justify-end gap-2">
-                <button type="button" onClick={() => setOpen(null)} disabled={busy} className="rounded-lg border border-border px-3 py-2 text-sm font-semibold text-ink">
+                <button type="button" onClick={() => setOpen(null)} disabled={busy} className="btn-back rounded-lg border border-border px-3 py-2 text-sm font-semibold text-ink">
                   Back
                 </button>
-                <button type="button" onClick={() => void submitEdit()} disabled={busy} className="rounded-lg bg-gold px-3 py-2 text-sm font-semibold text-white disabled:opacity-50">
+                <button type="button" onClick={() => void submitEdit()} disabled={busy} className="btn-save rounded-lg bg-gold px-3 py-2 text-sm font-semibold text-white disabled:opacity-50">
                   {busy ? "Saving…" : "Save correction"}
                 </button>
               </div>
@@ -205,10 +205,10 @@ export function ReleaseRecordActions({
               </label>
               {feedback && <p className="mt-3 text-sm text-red-700">{feedback}</p>}
               <div className="mt-4 flex justify-end gap-2">
-                <button type="button" onClick={() => setOpen(null)} disabled={busy} className="rounded-lg border border-border px-3 py-2 text-sm font-semibold text-ink">
+                <button type="button" onClick={() => setOpen(null)} disabled={busy} className="btn-back rounded-lg border border-border px-3 py-2 text-sm font-semibold text-ink">
                   Back
                 </button>
-                <button type="button" onClick={() => void submitVoid()} disabled={busy} className="rounded-lg bg-red-600 px-3 py-2 text-sm font-semibold text-white disabled:opacity-50">
+                <button type="button" onClick={() => void submitVoid()} disabled={busy} className="btn-danger rounded-lg bg-red-600 px-3 py-2 text-sm font-semibold text-white disabled:opacity-50">
                   {busy ? "Voiding…" : "Confirm void"}
                 </button>
               </div>

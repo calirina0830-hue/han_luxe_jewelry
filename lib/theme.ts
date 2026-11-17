@@ -1,6 +1,7 @@
 export type ThemePreference = "light" | "dark" | "system";
 
-// No stored value means "system" (follow the device setting).
+// No stored value means "dark" (the default HAN Luxe green theme);
+// "system" is stored explicitly when chosen.
 export const THEME_STORAGE_KEY = "amc-theme";
 export const THEME_CHANGE_EVENT = "amc-theme-change";
 
@@ -10,4 +11,4 @@ export const THEME_CHANGE_EVENT = "amc-theme-change";
 export const THEME_INIT_SCRIPT =
   "(function(){try{var p=localStorage.getItem(" +
   JSON.stringify(THEME_STORAGE_KEY) +
-  ');var d=p==="dark"||(p!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.setAttribute("data-theme",d?"dark":"light")}catch(e){}})()';
+  ');var d=p===null||p==="dark"||(p==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.setAttribute("data-theme",d?"dark":"light")}catch(e){}})()';

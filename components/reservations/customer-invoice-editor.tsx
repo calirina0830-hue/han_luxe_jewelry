@@ -198,7 +198,7 @@ export function CustomerInvoiceEditorPanel({
             </p>
           </div>
           <button
-            className="rounded-lg border border-gold/40 px-3 py-2 text-xs font-bold text-gold-dark hover:bg-gold-soft"
+            className="btn-save rounded-lg border border-gold/40 px-3 py-2 text-xs font-bold text-gold-dark hover:bg-gold-soft"
             onClick={addItem}
             type="button"
           >
@@ -299,7 +299,7 @@ export function CustomerInvoiceEditorPanel({
             {feedback?.message ?? "Changes affect the active reservation."}
           </p>
           <button
-            className="rounded-lg bg-ink px-4 py-2.5 text-xs font-bold text-white hover:bg-gold-dark disabled:opacity-50"
+            className="btn-save rounded-lg bg-primary px-4 py-2.5 text-xs font-bold text-on-primary hover:bg-primary-hover disabled:opacity-50"
             disabled={pending || items.length === 0}
             onClick={saveItems}
             type="button"

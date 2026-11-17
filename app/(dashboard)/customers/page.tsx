@@ -153,7 +153,7 @@ export default async function CustomersPage({
         <input name="direction" type="hidden" value={filters.direction} />
         <div className="flex gap-2">
           <button
-            className="h-11 rounded-xl bg-ink px-5 text-sm font-bold text-white"
+            className="btn-save h-11 rounded-xl bg-primary px-5 text-sm font-bold text-on-primary"
             type="submit"
           >
             Apply
@@ -276,7 +276,7 @@ export default async function CustomersPage({
                           {canWrite &&
                             (!customer.archived_at || isAdmin) && (
                               <Link
-                                className="text-sm font-semibold text-ink hover:underline"
+                                className="tx-edit text-sm font-semibold text-ink hover:underline"
                                 href={"/customers/" + customer.id + "/edit"}
                               >
                                 Edit

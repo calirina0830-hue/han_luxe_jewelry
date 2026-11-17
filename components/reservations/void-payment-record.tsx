@@ -24,7 +24,7 @@ export function VoidPaymentRecord({
   return (
     <>
       <button
-        className="inline-flex h-9 items-center justify-center rounded-lg px-3 text-sm font-semibold text-red-700 transition hover:bg-red-50"
+        className="btn-danger inline-flex h-9 items-center justify-center rounded-lg px-3 text-sm font-semibold text-red-700 transition hover:bg-red-50"
         onClick={() => setOpen(true)}
         type="button"
       >
@@ -83,7 +83,7 @@ export function VoidPaymentRecord({
 
               <div className="flex justify-end gap-3 pt-1">
                 <button
-                  className="h-10 rounded-lg border border-border px-4 text-sm font-semibold text-ink hover:bg-canvas disabled:opacity-50"
+                  className="btn-back h-10 rounded-lg border border-border px-4 text-sm font-semibold text-ink hover:bg-canvas disabled:opacity-50"
                   onClick={() => setOpen(false)}
                   type="button"
                 >
@@ -104,7 +104,7 @@ function VoidSubmitButton() {
 
   return (
     <button
-      className="h-10 rounded-lg bg-red-700 px-4 text-sm font-bold text-white hover:bg-red-800 disabled:opacity-50"
+      className="btn-danger h-10 rounded-lg bg-red-700 px-4 text-sm font-bold text-white hover:bg-red-800 disabled:opacity-50"
       disabled={pending}
       type="submit"
     >

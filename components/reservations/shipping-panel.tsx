@@ -354,7 +354,7 @@ export function ShippingPanel({
               type="button"
               onClick={openModal}
               disabled={pending}
-              className="inline-flex items-center justify-center rounded-full bg-foreground px-5 py-2.5 text-sm font-semibold text-background transition hover:bg-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+              className="btn-save inline-flex items-center justify-center rounded-full bg-foreground px-5 py-2.5 text-sm font-semibold text-background transition hover:bg-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
             >
               Release items &amp; generate invoice
             </button>
@@ -481,7 +481,7 @@ export function ShippingPanel({
                               setCancelShipmentId(null);
                               setCancelReason("");
                             }}
-                            className="rounded-full border border-border px-3.5 py-2 text-xs font-semibold text-foreground transition hover:bg-muted/40 disabled:opacity-50"
+                            className="btn-back rounded-full border border-border px-3.5 py-2 text-xs font-semibold text-foreground transition hover:bg-muted/40 disabled:opacity-50"
                           >
                             Back
                           </button>
@@ -489,7 +489,7 @@ export function ShippingPanel({
                             type="button"
                             disabled={busyShipmentId === shipment.id}
                             onClick={() => void handleCancel(shipment.id)}
-                            className="rounded-full bg-red-600 px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-red-700 disabled:opacity-50"
+                            className="btn-danger rounded-full bg-red-600 px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-red-700 disabled:opacity-50"
                           >
                             {busyShipmentId === shipment.id
                               ? "Cancelling…"
@@ -503,7 +503,7 @@ export function ShippingPanel({
                           type="button"
                           disabled={busyShipmentId === shipment.id}
                           onClick={() => void handleConfirm(shipment.id)}
-                          className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
+                          className="btn-save inline-flex items-center justify-center rounded-full bg-emerald-600 px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
                         >
                           Confirm shipped
                         </button>
@@ -515,7 +515,7 @@ export function ShippingPanel({
                               setCancelShipmentId(shipment.id);
                               setCancelReason("");
                             }}
-                            className="rounded-full border border-border px-3.5 py-2 text-xs font-semibold text-foreground transition hover:bg-muted/40 disabled:cursor-not-allowed disabled:opacity-50"
+                            className="btn-danger rounded-full border border-border px-3.5 py-2 text-xs font-semibold text-foreground transition hover:bg-muted/40 disabled:cursor-not-allowed disabled:opacity-50"
                           >
                             Cancel release
                           </button>
@@ -537,7 +537,7 @@ export function ShippingPanel({
                               setCancelShipmentId(shipment.id);
                               setCancelReason("");
                             }}
-                            className="rounded-full border border-red-200 bg-red-50 px-3.5 py-2 text-xs font-semibold text-red-700 transition hover:bg-red-100 disabled:cursor-not-allowed disabled:opacity-50"
+                            className="btn-danger rounded-full border border-red-200 bg-red-50 px-3.5 py-2 text-xs font-semibold text-red-700 transition hover:bg-red-100 disabled:cursor-not-allowed disabled:opacity-50"
                           >
                             Cancel shipped release
                           </button>
@@ -650,7 +650,7 @@ export function ShippingPanel({
                   <button
                     type="button"
                     onClick={closeModal}
-                    className="inline-flex items-center justify-center rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-foreground transition hover:bg-muted/40"
+                    className="btn-save inline-flex items-center justify-center rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-foreground transition hover:bg-muted/40"
                   >
                     Done
                   </button>
@@ -843,7 +843,7 @@ export function ShippingPanel({
                                     onClick={() =>
                                       toggleItem(item.id, item.available)
                                     }
-                                    className="rounded-full px-2.5 py-1 text-xs font-semibold text-indigo-600 transition hover:bg-indigo-50"
+                                    className="btn-danger rounded-full px-2.5 py-1 text-xs font-semibold text-indigo-600 transition hover:bg-indigo-50"
                                   >
                                     Remove
                                   </button>
@@ -1015,7 +1015,7 @@ export function ShippingPanel({
                   type="button"
                   onClick={closeModal}
                   disabled={pending}
-                  className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-foreground transition hover:bg-muted/40 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="btn-back rounded-full border border-border px-5 py-2.5 text-sm font-semibold text-foreground transition hover:bg-muted/40 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   Cancel
                 </button>
@@ -1023,7 +1023,7 @@ export function ShippingPanel({
                   type="button"
                   onClick={() => void submitRelease()}
                   disabled={pending || selectedRows.length === 0}
-                  className="inline-flex items-center justify-center rounded-full bg-foreground px-5 py-2.5 text-sm font-semibold text-background transition hover:bg-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+                  className="btn-save inline-flex items-center justify-center rounded-full bg-foreground px-5 py-2.5 text-sm font-semibold text-background transition hover:bg-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {pending
                     ? "Creating release…"

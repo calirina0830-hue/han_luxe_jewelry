@@ -62,7 +62,7 @@ export default async function OwnerLayout({
               </span>
             </span>
             <Link
-              className="rounded-xl border border-white/15 px-4 py-2 text-sm font-semibold text-white/80 transition hover:border-white/30 hover:bg-white/5 hover:text-white"
+              className="btn-back rounded-xl border border-white/15 px-4 py-2 text-sm font-semibold text-white/80 transition hover:border-white/30 hover:bg-white/5 hover:text-white"
               href="/reservations"
             >
               Back to App

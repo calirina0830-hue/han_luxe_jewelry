@@ -90,7 +90,7 @@ export function CustomerForm({ customer }: { customer?: Customer }) {
           {customer ? "Save changes" : "Add customer"}
         </FormSubmitButton>
         <Link
-          className="inline-flex h-11 items-center rounded-xl border border-border px-5 text-sm font-semibold text-ink hover:border-gold"
+          className="btn-back inline-flex h-11 items-center rounded-xl border border-border px-5 text-sm font-semibold text-ink hover:border-gold"
           href={customer ? "/customers/" + customer.id : "/customers"}
         >
           Cancel

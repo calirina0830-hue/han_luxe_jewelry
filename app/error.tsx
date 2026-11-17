@@ -28,7 +28,7 @@ export default function GlobalError({
           Your data has not been changed. Try loading the page again.
         </p>
         <button
-          className="mt-7 rounded-xl bg-gold px-5 py-3 text-sm font-bold text-white transition hover:bg-gold-dark"
+          className="btn-save mt-7 rounded-xl bg-gold px-5 py-3 text-sm font-bold text-white transition hover:bg-gold-dark"
           onClick={reset}
           type="button"
         >

@@ -224,7 +224,7 @@ export function InvoiceReleaseModal({
           <button
             type="button"
             onClick={openReleaseModal}
-            className="inline-flex h-9 items-center rounded-lg border border-gold bg-gold px-3 text-sm font-semibold text-white shadow-sm transition hover:bg-gold-dark"
+            className="btn-save inline-flex h-9 items-center rounded-lg border border-gold bg-gold px-3 text-sm font-semibold text-white shadow-sm transition hover:bg-gold-dark"
           >
             Release Items
           </button>
@@ -306,7 +306,7 @@ export function InvoiceReleaseModal({
                         setIsOpen(false);
                         setLastRelease(null);
                       }}
-                      className="inline-flex h-10 items-center rounded-lg border border-border bg-white px-4 text-sm font-semibold text-ink hover:bg-canvas"
+                      className="btn-back inline-flex h-10 items-center rounded-lg border border-border bg-white px-4 text-sm font-semibold text-ink hover:bg-canvas"
                     >
                       Close
                     </button>
@@ -511,7 +511,7 @@ export function InvoiceReleaseModal({
                   type="button"
                   onClick={() => setIsOpen(false)}
                   disabled={isSubmitting}
-                  className="rounded-lg border border-border bg-white px-4 py-2 text-sm font-semibold text-ink hover:bg-canvas"
+                  className="btn-back rounded-lg border border-border bg-white px-4 py-2 text-sm font-semibold text-ink hover:bg-canvas"
                 >
                   Cancel
                 </button>
@@ -519,7 +519,7 @@ export function InvoiceReleaseModal({
                   type="button"
                   onClick={handleConfirmRelease}
                   disabled={isSubmitting || selectedItemsList.length === 0}
-                  className="rounded-lg border border-gold bg-gold px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gold-dark disabled:opacity-50"
+                  className="btn-save rounded-lg border border-gold bg-gold px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gold-dark disabled:opacity-50"
                 >
                   {isSubmitting ? "Processing Release..." : "Confirm Release"}
                 </button>
@@ -660,7 +660,7 @@ export function InvoiceReleaseModal({
               <button
                 type="button"
                 onClick={() => setShowHistory(false)}
-                className="rounded-lg border border-border bg-white px-4 py-2 text-sm font-semibold text-ink hover:bg-canvas"
+                className="btn-back rounded-lg border border-border bg-white px-4 py-2 text-sm font-semibold text-ink hover:bg-canvas"
               >
                 Close
               </button>

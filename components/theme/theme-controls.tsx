@@ -13,11 +13,12 @@ const DARK_QUERY = "(prefers-color-scheme: dark)";
 function readPreference(): ThemePreference {
   try {
     const stored = localStorage.getItem(THEME_STORAGE_KEY);
-    if (stored === "light" || stored === "dark") return stored;
+    if (stored === "light" || stored === "dark" || stored === "system") return stored;
+    if (stored === null) return "dark";
   } catch {
     // Storage can be unavailable (private mode, blocked site data).
   }
-  return "system";
+  return "dark";
 }
 
 function applyTheme(preference: ThemePreference = readPreference()) {
@@ -29,11 +30,7 @@ function applyTheme(preference: ThemePreference = readPreference()) {
 
 function setPreference(preference: ThemePreference) {
   try {
-    if (preference === "system") {
-      localStorage.removeItem(THEME_STORAGE_KEY);
-    } else {
-      localStorage.setItem(THEME_STORAGE_KEY, preference);
-    }
+    localStorage.setItem(THEME_STORAGE_KEY, preference);
   } catch {
     // Still apply the theme for this page view.
   }

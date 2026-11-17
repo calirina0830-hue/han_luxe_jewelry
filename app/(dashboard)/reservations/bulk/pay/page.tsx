@@ -134,7 +134,7 @@ export default async function BulkPaymentPage({
               : "Bulk Payment Review"
         }
       >
-        <Link className="inline-flex h-11 items-center rounded-xl border border-border bg-white px-5 text-sm font-semibold text-ink hover:border-gold" href={isSettlement ? "/reservations?status=delivered" : "/reservations?status=reserved"}>
+        <Link className="btn-back inline-flex h-11 items-center rounded-xl border border-border bg-white px-5 text-sm font-semibold text-ink hover:border-gold" href={isSettlement ? "/reservations?status=delivered" : "/reservations?status=reserved"}>
           {isSettlement ? "Back to Delivered" : "Back to Reserved"}
         </Link>
       </PageHeader>

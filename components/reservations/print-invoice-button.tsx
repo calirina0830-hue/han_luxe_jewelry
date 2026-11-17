@@ -8,7 +8,7 @@ export function PrintInvoiceButton({
   return (
     <button
       data-print-hide
-      className="inline-flex h-11 items-center rounded-xl bg-ink px-5 text-sm font-bold text-white hover:bg-gold-dark"
+      className="inline-flex h-11 items-center rounded-xl bg-primary px-5 text-sm font-bold text-on-primary hover:bg-primary-hover"
       onClick={() => window.print()}
       type="button"
     >

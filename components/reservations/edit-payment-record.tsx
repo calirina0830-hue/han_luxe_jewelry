@@ -74,7 +74,7 @@ export function EditPaymentRecord({
   return (
     <>
       <button
-        className="rounded-lg border border-border bg-white px-3 py-1.5 text-sm font-semibold text-ink transition hover:border-gold hover:bg-canvas"
+        className="btn-edit rounded-lg border border-border bg-white px-3 py-1.5 text-sm font-semibold text-ink transition hover:border-gold hover:bg-canvas"
         onClick={() => {
           setError("");
           setOpen(true);
@@ -175,7 +175,7 @@ export function EditPaymentRecord({
               )}
               <div className="flex justify-end gap-3 pt-1">
                 <button
-                  className="h-10 rounded-lg border border-border px-4 text-sm font-semibold text-ink hover:bg-canvas disabled:opacity-50"
+                  className="btn-back h-10 rounded-lg border border-border px-4 text-sm font-semibold text-ink hover:bg-canvas disabled:opacity-50"
                   disabled={pending}
                   onClick={() => setOpen(false)}
                   type="button"
@@ -183,7 +183,7 @@ export function EditPaymentRecord({
                   Cancel
                 </button>
                 <button
-                  className="h-10 rounded-lg bg-gold px-4 text-sm font-bold text-white hover:bg-gold-dark disabled:opacity-50"
+                  className="btn-save h-10 rounded-lg bg-gold px-4 text-sm font-bold text-white hover:bg-gold-dark disabled:opacity-50"
                   disabled={pending}
                   type="submit"
                 >

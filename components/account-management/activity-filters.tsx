@@ -107,7 +107,7 @@ export function ActivityFilters({
           />
         </label>
         <button
-          className="inline-flex h-11 items-center rounded-xl bg-gold px-4 text-sm font-bold text-white transition hover:bg-gold-dark"
+          className="btn-save inline-flex h-11 items-center rounded-xl bg-gold px-4 text-sm font-bold text-white transition hover:bg-gold-dark"
           type="submit"
         >
           Apply

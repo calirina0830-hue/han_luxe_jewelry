@@ -110,7 +110,7 @@ export function FormSubmitButton({ children }: { children: string }) {
 
   return (
     <button
-      className="inline-flex h-11 items-center justify-center rounded-xl bg-gold px-6 text-sm font-bold text-white transition hover:bg-gold-dark disabled:cursor-wait disabled:opacity-60"
+      className="btn-save inline-flex h-11 items-center justify-center rounded-xl bg-gold px-6 text-sm font-bold text-white transition hover:bg-gold-dark disabled:cursor-wait disabled:opacity-60"
       disabled={pending}
       type="submit"
     >

@@ -73,7 +73,7 @@ export function PaymentEvidenceInput({
                 {preview.file.name}
               </p>
               <button
-                className="mt-1 text-xs font-bold text-red-700 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600"
+                className="tx-danger mt-1 text-xs font-bold text-red-700 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600"
                 disabled={busy}
                 onClick={() => syncFiles(files.filter((_, fileIndex) => fileIndex !== index))}
                 type="button"
@@ -86,7 +86,7 @@ export function PaymentEvidenceInput({
       )}
       <input
         accept={PAYMENT_EVIDENCE_MIME_TYPES.join(",")}
-        className="mt-2 block w-full text-xs font-normal text-muted file:mr-3 file:rounded-lg file:border-0 file:bg-ink file:px-3 file:py-2 file:text-xs file:font-bold file:text-white"
+        className="mt-2 block w-full text-xs font-normal text-muted file:mr-3 file:rounded-lg file:border-0 file:bg-primary file:px-3 file:py-2 file:text-xs file:font-bold file:text-on-primary"
         disabled={busy}
         id={name}
         multiple

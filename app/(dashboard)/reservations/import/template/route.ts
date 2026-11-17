@@ -54,7 +54,7 @@ export async function GET() {
   const buffer = await buildTemplate();
   return new NextResponse(buffer, {
     headers: {
-      "Content-Disposition": 'attachment; filename="amc-live-orders-template.xlsx"',
+      "Content-Disposition": 'attachment; filename="han_luxe_jewelry-live-orders-template.xlsx"',
       "Content-Type":
         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
       "Cache-Control": "private, no-store",

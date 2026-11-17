@@ -115,7 +115,7 @@ export function LiveOrderImport() {
           ledger.
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
-          <Link className="rounded-xl bg-ink px-5 py-3 text-sm font-bold text-white" href="/reservations?status=reserved">
+          <Link className="rounded-xl bg-primary px-5 py-3 text-sm font-bold text-on-primary" href="/reservations?status=reserved">
             View Reserved
           </Link>
           <button
@@ -189,7 +189,7 @@ export function LiveOrderImport() {
             />
 
             <button
-              className="mt-5 rounded-xl bg-ink px-5 py-3 text-sm font-bold text-white disabled:cursor-not-allowed disabled:opacity-50"
+              className="mt-5 rounded-xl bg-primary px-5 py-3 text-sm font-bold text-on-primary disabled:cursor-not-allowed disabled:opacity-50"
               disabled={!file || busy !== null}
               onClick={() => void submit("preview")}
               type="button"
@@ -299,7 +299,7 @@ export function LiveOrderImport() {
                   </p>
                 </div>
                 <button
-                  className="shrink-0 rounded-xl bg-gold px-6 py-3 text-sm font-black text-ink disabled:cursor-not-allowed disabled:opacity-50"
+                  className="btn-save shrink-0 rounded-xl bg-gold px-6 py-3 text-sm font-black text-ink disabled:cursor-not-allowed disabled:opacity-50"
                   disabled={preview.summary.invalidRows > 0 || busy !== null}
                   onClick={() => void submit("confirm")}
                   type="button"
@@ -318,7 +318,7 @@ export function LiveOrderImport() {
 function Step({ number, title, active }: { number: string; title: string; active: boolean }) {
   return (
     <div className="shrink-0 text-center">
-      <span className={"grid size-10 place-items-center rounded-full text-sm font-black " + (active ? "bg-ink text-white" : "bg-stone-100 text-muted")}>{number}</span>
+      <span className={"grid size-10 place-items-center rounded-full text-sm font-black " + (active ? "bg-primary text-on-primary" : "bg-stone-100 text-muted")}>{number}</span>
       <span className="mt-1 block text-[10px] font-bold uppercase tracking-wider text-muted">{title}</span>
     </div>
   );
